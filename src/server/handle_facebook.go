@@ -18,6 +18,11 @@ func (s *Server) handleFacebook() http.HandlerFunc {
 			fmt.Println("\nFacebook endpoint HIT w GET request\n")
 			fmt.Println("Request: ", r)
 			defer s.handleUnexpectedError(w, r)
+
+			test_value := r.URL.Query()
+			fmt.Println("test_query value: ", test_value)
+			fmt.Printf("%T: ", test_value)
+
 		
 		case http.MethodPost:
 			fmt.Println("\nFacebook endpoint HIT w POST request")
