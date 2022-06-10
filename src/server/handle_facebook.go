@@ -24,6 +24,17 @@ func (s *Server) handleFacebook() http.HandlerFunc {
 			fmt.Println("test_query value: ", test_value)
 			fmt.Println("test_query type: ", reflect.TypeOf(test_value))
 
+			test_url_hubMode := test_value.Get("hub.mode")
+			fmt.Println("hub.mode: ", test_url_hubMode)
+
+			test_url_token := test_value.Get("hub.verify_token")
+			fmt.Println("hub.verify_token: ", test_url_token)
+
+			test_url_challenge := test_value.Get("hub.challenge")
+			fmt.Println("hub.challenge: ", test_url_challenge)
+			w.Write([]byte(test_url_challenge))
+			
+
 		
 		case http.MethodPost:
 			fmt.Println("\nFacebook endpoint HIT w POST request")
@@ -34,9 +45,9 @@ func (s *Server) handleFacebook() http.HandlerFunc {
 
 		}
 		
-		_, err := w.Write([]byte("FACEBOOK ENDPOINT OK"))
-		if err != nil {
-			InternalServerError.ServeHTTP(w, r)
-		}
+		// _, err := w.Write([]byte("FACEBOOK ENDPOINT OK"))
+		// if err != nil {
+		// 	InternalServerError.ServeHTTP(w, r)
+		// }
 	}
 }
