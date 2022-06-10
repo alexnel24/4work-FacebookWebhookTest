@@ -3,6 +3,7 @@ package server
 import (
 	"fmt"
 	"net/http"
+	"reflect"
 )
 
 func (s *Server) handleFacebook() http.HandlerFunc {
@@ -21,7 +22,7 @@ func (s *Server) handleFacebook() http.HandlerFunc {
 
 			test_value := r.URL.Query()
 			fmt.Println("test_query value: ", test_value)
-			fmt.Printf("%T: ", test_value)
+			fmt.Println("test_query type: ", reflect.TypeOf(test_value))
 
 		
 		case http.MethodPost:
