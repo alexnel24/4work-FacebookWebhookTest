@@ -49,6 +49,7 @@ func (s *Server) handleFacebook() http.HandlerFunc {
 			fmt.Println("\nFacebook endpoint HIT w POST request")
 			fmt.Println("Request: ", r)
 			fmt.Println("Request body: ", r.Body)
+			fmt.Println("request body type: ", reflect.TypeOf(r.Body))
 			defer s.handleUnexpectedError(w, r)
 			// received_updates.unshift(r.Body)
 
@@ -61,12 +62,15 @@ func (s *Server) handleFacebook() http.HandlerFunc {
 				// return
 			}
 			fmt.Println("IO READALL: ", new_byte_arr)
+			fmt.Println("readall type: ", reflect.TypeOf(new_byte_arr))
 
-			err = json.Unmarshal(new_byte_arr, &incoming)
+			// err = json.Unmarshal(new_byte_arr, &incoming)
 
-			// err = s.decode(w, r, &incoming)
+
+
+			err = s.decode(w, r, &incoming)
 			if err != nil {
-				fmt.Println("json_get err: ", err)
+				fmt.Println("decode err: ", err)
 				fmt.Println("incoming object: ", incoming)
 				OtherError.ServeHTTP(w, r)
 				return
