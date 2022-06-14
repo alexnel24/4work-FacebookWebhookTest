@@ -1,7 +1,9 @@
 package server
 
 import (
+	// "encoding/json"
 	"fmt"
+	"io"
 	"net/http"
 	"reflect"
 )
@@ -51,7 +53,17 @@ func (s *Server) handleFacebook() http.HandlerFunc {
 
 			var incoming facebookRequest
 
-			err := s.decode(w, r, &incoming)
+			new_str, err := io.ReadAll(r.Body)
+			if err != nil {
+				fmt.Println("readAll err: ", err)
+				// OtherError.ServeHTTP(w, r)
+				// return
+			}
+			fmt.Println("IO READALL: ", new_str)
+
+			// json.Unmarshal(r.Body, &incoming)
+
+			err = s.decode(w, r, &incoming)
 			if err != nil {
 				fmt.Println("decode err: ", err)
 				fmt.Println("incoming object: ", incoming)
