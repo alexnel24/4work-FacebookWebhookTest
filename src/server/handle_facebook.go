@@ -6,6 +6,11 @@ import (
 	"reflect"
 )
 
+type facebookRequest struct {
+	Field string `json:"field"`
+	Value string `json:"value"`
+}
+
 func (s *Server) handleFacebook() http.HandlerFunc {
 	fmt.Println("\nFacebook endpoint RUNNING")
 	// var received_updates []int
@@ -43,6 +48,21 @@ func (s *Server) handleFacebook() http.HandlerFunc {
 			fmt.Println("Request body: ", r.Body)
 			defer s.handleUnexpectedError(w, r)
 			// received_updates.unshift(r.Body)
+
+			var incoming facebookRequest
+
+			err := s.decode(w, r, &incoming)
+			if err != nil {
+				fmt.Println("decode err: ", err)
+				fmt.Println("incoming object: ", incoming)
+				OtherError.ServeHTTP(w, r)
+				return
+			}
+
+			fmt.Println("items successfully received")
+			fmt.Println("incoming object: ", incoming)
+
+
 
 
 
