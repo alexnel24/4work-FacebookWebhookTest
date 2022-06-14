@@ -8,6 +8,7 @@ import (
 
 func (s *Server) handleFacebook() http.HandlerFunc {
 	fmt.Println("\nFacebook endpoint RUNNING")
+	var received_updates []int
 
 	return func(w http.ResponseWriter, r *http.Request) {
 
@@ -39,7 +40,9 @@ func (s *Server) handleFacebook() http.HandlerFunc {
 		case http.MethodPost:
 			fmt.Println("\nFacebook endpoint HIT w POST request")
 			fmt.Println("Request: ", r)
+			fmt.Println("Request body: ", r.Body)
 			defer s.handleUnexpectedError(w, r)
+			// received_updates.unshift(r.Body)
 
 
 
