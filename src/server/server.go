@@ -36,11 +36,16 @@ func (s *Server) respond(w http.ResponseWriter, r *http.Request, data interface{
 }
 
 func (s *Server) decode(w http.ResponseWriter, r *http.Request, v interface{}) error {
+
 	w.Header().Set("Content-Type", "application/json")
 	if r.Body == nil {
 		fmt.Println("body of request is nil:", r)
 		return errors.New("body of request is nil")
 	}
+	decoder := json.NewDecoder(r.Body)
+	fmt.Println("decoder: ", decoder)
+	decoded := decoder.Decode(v)
+	fmt.Println("decoded: ", decoded)
 	return json.NewDecoder(r.Body).Decode(v)
 }
 
