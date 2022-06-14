@@ -8,7 +8,7 @@ import (
 
 func (s *Server) handleFacebook() http.HandlerFunc {
 	fmt.Println("\nFacebook endpoint RUNNING")
-	var received_updates []int
+	// var received_updates []int
 
 	return func(w http.ResponseWriter, r *http.Request) {
 
