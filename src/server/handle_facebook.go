@@ -2,7 +2,7 @@ package server
 
 import (
 	// "encoding/json"
-	// "encoding/json"
+	"encoding/json"
 	"fmt"
 	"io"
 	"net/http"
@@ -64,11 +64,12 @@ func (s *Server) handleFacebook() http.HandlerFunc {
 			fmt.Println("IO READALL: ", new_byte_arr)
 			fmt.Println("readall type: ", reflect.TypeOf(new_byte_arr))
 
-			// err = json.Unmarshal(new_byte_arr, &incoming)
+			// wr := WebHookRequest{}
+			err = json.Unmarshal(new_byte_arr, &incoming)
 
 
 
-			err = s.decode(w, r, &incoming)
+			// err = s.decode(w, r, &incoming)
 			if err != nil {
 				fmt.Println("decode err: ", err)
 				fmt.Println("incoming object: ", incoming)
