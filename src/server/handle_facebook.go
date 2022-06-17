@@ -10,8 +10,12 @@ import (
 )
 
 type facebookRequest struct {
-	Field string `json:"field"`
-	Value string `json:"value"`
+	Field string `json:"object"`
+	// Entry[]struct {
+	// 	ID string `json:"id"`
+	// 	Time int64 `json:time"`
+	// }
+	// Value string `json:"value"`
 }
 
 func (s *Server) handleFacebook() http.HandlerFunc {
