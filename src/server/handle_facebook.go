@@ -10,7 +10,7 @@ import (
 )
 
 type FacebookFirstLead struct {
-	OneOnly []string `json:"1"`
+	OneOnly []ActualLead `json:"1"`
 }
 
 type ActualLead struct {
@@ -78,8 +78,8 @@ func (s *Server) handleFacebook() http.HandlerFunc {
 				// OtherError.ServeHTTP(w, r)
 				// return
 			}
-			fmt.Println("IO READALL: ", new_byte_arr)
-			fmt.Println("readall type: ", reflect.TypeOf(new_byte_arr))
+			// fmt.Println("IO READALL: ", new_byte_arr)
+			// fmt.Println("readall type: ", reflect.TypeOf(new_byte_arr))
 
 			// wr := WebHookRequest{}
 			err = json.Unmarshal(new_byte_arr, &incoming)
