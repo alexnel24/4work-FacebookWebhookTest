@@ -89,8 +89,6 @@ func (s *Server) handleFacebook() http.HandlerFunc {
 
 			
 
-			fmt.Println("get id: ", incoming.Entry.ZeroOnly.Id)
-
 
 
 			// err = s.decode(w, r, &incoming)
