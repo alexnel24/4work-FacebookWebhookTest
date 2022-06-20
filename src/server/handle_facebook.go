@@ -10,18 +10,21 @@ import (
 )
 
 type FacebookFirstLead struct {
+	ZeroOnly ActualHeaders `json:"0"`
 	OneOnly ActualLead `json:"1"`
 }
 
+type ActualHeaders struct{
+	Id int `json:"id"`
+}
 type ActualLead struct {
 	Field string `json:"field"`
 	Value string `json:"value"`
-
-	
 }
 
 type facebookRequest struct {
 	Object string `json:"object"`
+	// ParseCheat string `json:"entry"["0"]["id"]`
 	Entry FacebookFirstLead `json:"entry"`
 
 	// Entry[]struct {
