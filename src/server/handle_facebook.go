@@ -73,7 +73,8 @@ func (s *Server) handleFacebook() http.HandlerFunc {
 			defer s.handleUnexpectedError(w, r)
 			// received_updates.unshift(r.Body)
 
-			var incoming facebookRequest
+			// var incoming facebookRequest
+
 
 			new_byte_arr, err := io.ReadAll(r.Body)
 			if err != nil {
@@ -85,7 +86,8 @@ func (s *Server) handleFacebook() http.HandlerFunc {
 			// fmt.Println("readall type: ", reflect.TypeOf(new_byte_arr))
 
 			// wr := WebHookRequest{}
-			err = json.Unmarshal(new_byte_arr, &incoming)
+			var objs []map[string]*json.RawMessage
+			err = json.Unmarshal(new_byte_arr, &objs)
 
 			
 
@@ -94,13 +96,13 @@ func (s *Server) handleFacebook() http.HandlerFunc {
 			// err = s.decode(w, r, &incoming)
 			if err != nil {
 				fmt.Println("decode err: ", err)
-				fmt.Println("incoming object: ", incoming)
+				fmt.Println("incoming object: ", objs)
 				OtherError.ServeHTTP(w, r)
 				return
 			}
 
 			fmt.Println("items successfully received")
-			fmt.Println("incoming object: ", incoming)
+			fmt.Println("incoming object: ", objs)
 
 
 
