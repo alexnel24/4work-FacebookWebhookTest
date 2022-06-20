@@ -10,13 +10,13 @@ import (
 )
 
 type FacebookLead struct {
-	id int `json:"id"`
+	Id []string `json:"0"`
 
 }
 
 type facebookRequest struct {
 	Object string `json:"object"`
-	Entry string `json:"entry"`
+	Entry []FacebookLead `json:"entry"`
 
 	// Entry[]struct {
 	// 	ID string `json:"id"`
