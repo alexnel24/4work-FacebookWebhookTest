@@ -67,9 +67,9 @@ func (s *Server) handleFacebook() http.HandlerFunc {
 		
 		case http.MethodPost:
 			fmt.Println("\nFacebook endpoint HIT w POST request")
-			fmt.Println("Request: ", r)
-			fmt.Println("Request body: ", r.Body)
-			fmt.Println("request body type: ", reflect.TypeOf(r.Body))
+			// fmt.Println("Request: ", r)
+			// fmt.Println("Request body: ", r.Body)
+			// fmt.Println("request body type: ", reflect.TypeOf(r.Body))
 			defer s.handleUnexpectedError(w, r)
 			// received_updates.unshift(r.Body)
 
@@ -86,6 +86,8 @@ func (s *Server) handleFacebook() http.HandlerFunc {
 
 			// wr := WebHookRequest{}
 			err = json.Unmarshal(new_byte_arr, &incoming)
+
+			
 
 			fmt.Println("get id: ", incoming.Entry.ZeroOnly.Id)
 
