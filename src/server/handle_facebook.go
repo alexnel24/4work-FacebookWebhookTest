@@ -10,19 +10,19 @@ import (
 )
 
 type FacebookFirstLead struct {
-	OneOnly []ActualLead `json:"1"`
+	OneOnly ActualLead `json:"1"`
 }
 
 type ActualLead struct {
 	Field string `json:"field"`
-	Value []string `json:"value"`
+	Value string `json:"value"`
 
 	
 }
 
 type facebookRequest struct {
 	Object string `json:"object"`
-	Entry []FacebookFirstLead `json:"entry"`
+	Entry FacebookFirstLead `json:"entry"`
 
 	// Entry[]struct {
 	// 	ID string `json:"id"`
