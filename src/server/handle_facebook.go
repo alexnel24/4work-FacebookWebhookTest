@@ -9,14 +9,20 @@ import (
 	"reflect"
 )
 
-type FacebookLead struct {
-	Id []string `json:"0"`
+type FacebookFirstLead struct {
+	OneOnly []string `json:"1"`
+}
 
+type ActualLead struct {
+	Field string `json:"field"`
+	Value []string `json:"value"`
+
+	
 }
 
 type facebookRequest struct {
 	Object string `json:"object"`
-	Entry []FacebookLead `json:"entry"`
+	Entry []FacebookFirstLead `json:"entry"`
 
 	// Entry[]struct {
 	// 	ID string `json:"id"`
