@@ -9,8 +9,15 @@ import (
 	"reflect"
 )
 
+type FacebookLead struct {
+	id int `json:"id"`
+
+}
+
 type facebookRequest struct {
-	Field string `json:"object"`
+	Object string `json:"object"`
+	Entry string `json:"entry"`
+
 	// Entry[]struct {
 	// 	ID string `json:"id"`
 	// 	Time int64 `json:time"`
