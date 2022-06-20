@@ -10,12 +10,12 @@ import (
 )
 
 type FacebookFirstLead struct {
-	ZeroOnly ActualHeaders `json:"0"`
-	OneOnly ActualLead `json:"1"`
+	ZeroOnly []ActualHeaders `json:"0"`
+	OneOnly []ActualLead `json:"1"`
 }
 
 type ActualHeaders struct{
-	Id int `json:"id"`
+	Id string `json:"id"`
 }
 type ActualLead struct {
 	Field string `json:"field"`
@@ -25,7 +25,7 @@ type ActualLead struct {
 type facebookRequest struct {
 	Object string `json:"object"`
 	// ParseCheat string `json:"entry"["0"]["id"]`
-	Entry FacebookFirstLead `json:"entry"`
+	Entry []FacebookFirstLead `json:"entry"`
 
 	// Entry[]struct {
 	// 	ID string `json:"id"`
@@ -67,9 +67,9 @@ func (s *Server) handleFacebook() http.HandlerFunc {
 		
 		case http.MethodPost:
 			fmt.Println("\nFacebook endpoint HIT w POST request")
-			fmt.Println("Request: ", r)
-			fmt.Println("Request body: ", r.Body)
-			fmt.Println("request body type: ", reflect.TypeOf(r.Body))
+			// fmt.Println("Request: ", r)
+			// fmt.Println("Request body: ", r.Body)
+			// fmt.Println("request body type: ", reflect.TypeOf(r.Body))
 			defer s.handleUnexpectedError(w, r)
 			// received_updates.unshift(r.Body)
 
@@ -86,6 +86,10 @@ func (s *Server) handleFacebook() http.HandlerFunc {
 
 			// wr := WebHookRequest{}
 			err = json.Unmarshal(new_byte_arr, &incoming)
+
+			
+
+			fmt.Println("get id: ", incoming.Entry.ZeroOnly.Id)
 
 
 
