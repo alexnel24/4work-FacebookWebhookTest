@@ -86,7 +86,8 @@ func (s *Server) handleFacebook() http.HandlerFunc {
 			// fmt.Println("readall type: ", reflect.TypeOf(new_byte_arr))
 
 			// wr := WebHookRequest{}
-			var objs []map[string]*json.RawMessage
+			// var objs []map[string]*json.RawMessage
+			var objs *json.RawMessage
 			err = json.Unmarshal(new_byte_arr, &objs)
 
 			
