@@ -15,7 +15,7 @@ type FacebookFirstLead struct {
 }
 
 type ActualHeaders struct{
-	Id int `json:"id"`
+	Id string `json:"id"`
 }
 type ActualLead struct {
 	Field string `json:"field"`
@@ -86,6 +86,8 @@ func (s *Server) handleFacebook() http.HandlerFunc {
 
 			// wr := WebHookRequest{}
 			err = json.Unmarshal(new_byte_arr, &incoming)
+
+			fmt.Println("get id: ", incoming.Entry.ZeroOnly.Id)
 
 
 
