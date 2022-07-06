@@ -4,14 +4,14 @@ ENV PORT=8081
 ENV APP_SECRET=a87ce8356d8788bac24d22ddc93442d5
 ENV TOKEN=WTF
 
-COPY .build/certs/*.crt /usr/local/share/ca-certificates/
+# COPY .build/certs/*.crt /usr/local/share/ca-certificates/
 
 COPY . /src
 
-RUN apk add --allow-untrusted --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/latest-stable/main/ ca-certificates \
-  && update-ca-certificates \
-  && apk add --no-cache bash curl \
-  && apk --no-cache --available upgrade
+# RUN apk add --allow-untrusted --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/latest-stable/main/ ca-certificates \
+#   && update-ca-certificates \
+#   && apk add --no-cache bash curl \
+#   && apk --no-cache --available upgrade
 
 WORKDIR /src
 
