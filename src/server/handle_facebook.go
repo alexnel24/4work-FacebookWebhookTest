@@ -18,23 +18,25 @@ type FacebookEntry struct {
 	Id string `json:"id"`
 	Uid string `json:"uid"`
 	Changed_fields []string `json:"changed_fields"`
-	Changes []string `json:"changes"`
+	Changes []FacebookChanges `json:"changes"`
 	Time int `json:"time"`
 	
 	
 }
 
-// type FacebookField struct{
-// 	Field string `json:"field"`
-// 	Value []FacebookFieldValue `json:"value"`
-// }
+type FacebookChanges struct {
+	Field string `json:"field"`
+	Values []FacebookFieldValue `json:"value"`
+}
 
-// type FacebookFieldValue struct {
-// 	Ad_id string `json:"ad_id"`
-// 	Form_id string `json:"formt_id"`
-// 	Leadgen_id string `json:"leadgen_id"`
-// 	Created_Time string ``
-// }
+type FacebookFieldValue struct {
+	Ad_id string `json:"ad_id"`
+	Form_id string `json:"formt_id"`
+	Leadgen_id string `json:"leadgen_id"`
+	Created_Time int `json:"created_time"`
+	Page_id string `json:"page_id"`
+	Adgroup_id string `json:"adgroup_id"`
+}
 
 
 
