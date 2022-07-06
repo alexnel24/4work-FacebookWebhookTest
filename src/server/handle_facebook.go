@@ -17,7 +17,10 @@ type FacebookRequest struct {
 type FacebookEntry struct {
 	Id string `json:"id"`
 	Uid string `json:"uid"`
-	Changes []string `json:"changed_fields"`
+	Changed_fields []string `json:"changed_fields"`
+	Changes []string `json:"changes"`
+	Time int `json:"time"`
+	
 	
 }
 
