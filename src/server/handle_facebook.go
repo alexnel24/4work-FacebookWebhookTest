@@ -9,30 +9,36 @@ import (
 	"reflect"
 )
 
-type FacebookFirstLead struct {
-	ZeroOnly []ActualHeaders `json:"0"`
-	OneOnly []ActualLead `json:"1"`
-}
-
-type ActualHeaders struct{
-	Id string `json:"id"`
-}
-type ActualLead struct {
-	Field string `json:"field"`
-	Value string `json:"value"`
-}
-
 type facebookRequest struct {
 	Object string `json:"object"`
-	// ParseCheat string `json:"entry"["0"]["id"]`
-	Entry []FacebookFirstLead `json:"entry"`
-
-	// Entry[]struct {
-	// 	ID string `json:"id"`
-	// 	Time int64 `json:time"`
-	// }
-	// Value string `json:"value"`
+	Entry []FacebookEntry `json:"entry"`
 }
+
+type FacebookEntry struct {
+	Id int `json:"id"`
+	Uid int `json:"uid"`
+	Changes []string `json:"changed_fields"`
+	
+}
+
+// type FacebookField struct{
+// 	Field string `json:"field"`
+// 	Value []FacebookFieldValue `json:"value"`
+// }
+
+// type FacebookFieldValue struct {
+// 	Ad_id string `json:"ad_id"`
+// 	Form_id string `json:"formt_id"`
+// 	Leadgen_id string `json:"leadgen_id"`
+// 	Created_Time string ``
+// }
+
+
+
+
+
+
+
 
 func (s *Server) handleFacebook() http.HandlerFunc {
 	fmt.Println("\nFacebook endpoint RUNNING")
@@ -104,9 +110,6 @@ func (s *Server) handleFacebook() http.HandlerFunc {
 
 			fmt.Println("items successfully received")
 			fmt.Println("incoming object: ", objs)
-
-
-
 
 
 		}
