@@ -9,7 +9,7 @@ import (
 	"reflect"
 )
 
-type facebookRequest struct {
+type FacebookRequest struct {
 	Object string `json:"object"`
 	Entry []FacebookEntry `json:"entry"`
 }
@@ -93,7 +93,7 @@ func (s *Server) handleFacebook() http.HandlerFunc {
 
 			// wr := WebHookRequest{}
 			// var objs []map[string]*json.RawMessage
-			var objs *json.RawMessage
+			var objs FacebookRequest
 			err = json.Unmarshal(new_byte_arr, &objs)
 
 			
