@@ -2,7 +2,7 @@ FROM golang:1.16-alpine
 
 ENV PORT=8081
 ENV APP_SECRET=a87ce8356d8788bac24d22ddc93442d5
-ENV TOKEN=WTF
+ENV TOKEN=TestPr0grexionToken!
 
 # COPY .build/certs/*.crt /usr/local/share/ca-certificates/
 
